@@ -10,7 +10,6 @@ jobs:
       - name: Run shell script
         run: |
           echo 'Hello World'
-          exit 1
   test:
     name: Test
     runs-on: ubuntu-20.04
