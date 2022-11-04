@@ -7,27 +7,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Run shell script
-        run: |
-          echo 'Hello World'
-  test:
-    name: Test
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        fruit: [apple, pear]
-        animal: [cat, dog]
-        include:
-          - color: green
-          - color: pink
-            animal: cat
-          - fruit: apple
-            shape: circle
-          - fruit: banana
-          - fruit: banana
-            animal: cat
-    steps:
-      - name: Run shell script
-        run: |
-          echo 'Hello world'
-          echo 'From ${{ matrix.fruit }}'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.0' 
+      - run: python test.py
