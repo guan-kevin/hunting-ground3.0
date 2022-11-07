@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - run: |
+          "version=$(cat python_version.txt)" >> $GITHUB_ENV
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.9.11' 
+          python-version: '${{ env.version }}' 
       - run: python test.py
