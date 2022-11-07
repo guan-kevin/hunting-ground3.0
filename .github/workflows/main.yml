@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          "version=$(cat python_version.txt)" >> $GITHUB_ENV
+          echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
       - uses: actions/setup-python@v4
         with:
           python-version: '${{ env.version }}' 
