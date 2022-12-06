@@ -33,9 +33,4 @@ jobs:
       container: 'python:3.11'
       steps:
         - uses: actions/checkout@v2
-        - run: |
-            echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
-        - uses: actions/setup-python@v4
-          with:
-            python-version: '${{ env.version }}' 
         - run: python test.py
