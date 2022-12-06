@@ -58,8 +58,6 @@ jobs:
             echo "${{ env.TEST }}"
             echo "${{ env.tESt }}"
           env:
-            world: world
-            WORLD: WORLD
             woRLd: woRLd
   
 #   build0:
