@@ -2,35 +2,97 @@ name: Main
 on: [push, pull_request]
 
 jobs:
-  build0:
-    name: Build v0
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '${{ env.version }}' 
-      - run: python test.py
-
-  build1:
-    name: Build v1
-    runs-on: ubuntu-latest
-    container: ''
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '${{ env.version }}' 
-      - run: python test.py
-
-  build2:
-      name: Build v2
+  env_test:
+      name: Test Env
       runs-on: ubuntu-latest
-      container: 'python:3.11'
+      env:
+        test: test
+        TEST: TEST
+        tESt: tESt
       steps:
         - uses: actions/checkout@v2
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.11' 
         - run: python test.py
+        - run: |
+            echo "hello=hello" >> $GITHUB_ENV
+            echo "HELLO=HELLO" >> $GITHUB_ENV
+            echo "heLLo=heLLO" >> $GITHUB_ENV
+            
+            echo 'bye<<@' >> $GITHUB_ENV
+            echo 'bye' >> $GITHUB_ENV
+            echo '@' >> $GITHUB_ENV
+            
+            echo 'BYE<<@' >> $GITHUB_ENV
+            echo 'BYE' >> $GITHUB_ENV
+            echo '@' >> $GITHUB_ENV
+            
+            echo 'bYe<<@' >> $GITHUB_ENV
+            echo 'bYe' >> $GITHUB_ENV
+            echo '@' >> $GITHUB_ENV
+        - run: |
+            echo $hello
+            echo $HELLO
+            echo $heLLo
+            echo "${{ env.hello }}"
+            echo "${{ env.HELLO }}"
+            echo "${{ env.heLLo }}"
+            
+            echo $world
+            echo $WORLD
+            echo $woRLd
+            echo "${{ env.world }}"
+            echo "${{ env.WORLD }}"
+            echo "${{ env.woRLd }}"
+            
+            echo $bye
+            echo $BYE
+            echo $bYe
+            echo "${{ env.bye }}"
+            echo "${{ env.BYE }}"
+            echo "${{ env.bYe }}"
+            
+            echo $test
+            echo $TEST
+            echo $tESt
+            echo "${{ env.test }}"
+            echo "${{ env.TEST }}"
+            echo "${{ env.tESt }}"
+          env:
+            world: world
+            WORLD: WORLD
+            woRLd: woRLd
+  
+#   build0:
+#     name: Build v0
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - run: |
+#           echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: '${{ env.version }}' 
+#       - run: python test.py
+
+#   build1:
+#     name: Build v1
+#     runs-on: ubuntu-latest
+#     container: ''
+#     steps:
+#       - uses: actions/checkout@v2
+#       - run: |
+#           echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: '${{ env.version }}' 
+#       - run: python test.py
+
+#   build2:
+#       name: Build v2
+#       runs-on: ubuntu-latest
+#       container: 'python:3.11'
+#       steps:
+#         - uses: actions/checkout@v2
+#         - run: python test.py
