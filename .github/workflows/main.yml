@@ -2,8 +2,20 @@ name: Main
 on: [push, pull_request]
 
 jobs:
-  build:
-    name: Build
+  build0:
+    name: Build v0
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '${{ env.version }}' 
+      - run: python test.py
+
+  build1:
+    name: Build v1
     runs-on: ubuntu-latest
     container: ''
     steps:
@@ -14,3 +26,16 @@ jobs:
         with:
           python-version: '${{ env.version }}' 
       - run: python test.py
+
+  build2:
+      name: Build v2
+      runs-on: ubuntu-latest
+      container: 'python:3.11'
+      steps:
+        - uses: actions/checkout@v2
+        - run: |
+            echo "version=$(cat python_version.txt)" >> $GITHUB_ENV
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '${{ env.version }}' 
+        - run: python test.py
