@@ -6,8 +6,6 @@ jobs:
       name: Test Env
       runs-on: ubuntu-latest
       env:
-        test: test
-        TEST: TEST
         tESt: tESt
       steps:
         - uses: actions/checkout@v2
