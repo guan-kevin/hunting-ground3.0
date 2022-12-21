@@ -2,63 +2,74 @@ name: Main
 on: [push, pull_request]
 
 jobs:
-  env_test:
-      name: Test Env
+  test:
+      name: Test
       runs-on: ubuntu-latest
-      env:
-        tESt: tESt
       steps:
         - uses: actions/checkout@v2
-        - uses: actions/setup-python@v4
-          with:
-            python-version: '3.11' 
-        - run: python test.py
         - run: |
-            echo "hello=hello" >> $GITHUB_ENV
-            echo "HELLO=HELLO" >> $GITHUB_ENV
-            echo "heLLo=heLLO" >> $GITHUB_ENV
+            echo "Hello"
+            echo "::error::Stop here"
+            echo "World"
+        
+# jobs:
+#   env_test:
+#       name: Test Env
+#       runs-on: ubuntu-latest
+#       env:
+#         tESt: tESt
+#       steps:
+#         - uses: actions/checkout@v2
+#         - uses: actions/setup-python@v4
+#           with:
+#             python-version: '3.11' 
+#         - run: python test.py
+#         - run: |
+#             echo "hello=hello" >> $GITHUB_ENV
+#             echo "HELLO=HELLO" >> $GITHUB_ENV
+#             echo "heLLo=heLLO" >> $GITHUB_ENV
             
-            echo 'bye<<@' >> $GITHUB_ENV
-            echo 'bye' >> $GITHUB_ENV
-            echo '@' >> $GITHUB_ENV
+#             echo 'bye<<@' >> $GITHUB_ENV
+#             echo 'bye' >> $GITHUB_ENV
+#             echo '@' >> $GITHUB_ENV
             
-            echo 'BYE<<@' >> $GITHUB_ENV
-            echo 'BYE' >> $GITHUB_ENV
-            echo '@' >> $GITHUB_ENV
+#             echo 'BYE<<@' >> $GITHUB_ENV
+#             echo 'BYE' >> $GITHUB_ENV
+#             echo '@' >> $GITHUB_ENV
             
-            echo 'bYe<<@' >> $GITHUB_ENV
-            echo 'bYe' >> $GITHUB_ENV
-            echo '@' >> $GITHUB_ENV
-        - run: |
-            echo $hello
-            echo $HELLO
-            echo $heLLo
-            echo "${{ env.hello }}"
-            echo "${{ env.HELLO }}"
-            echo "${{ env.heLLo }}"
+#             echo 'bYe<<@' >> $GITHUB_ENV
+#             echo 'bYe' >> $GITHUB_ENV
+#             echo '@' >> $GITHUB_ENV
+#         - run: |
+#             echo $hello
+#             echo $HELLO
+#             echo $heLLo
+#             echo "${{ env.hello }}"
+#             echo "${{ env.HELLO }}"
+#             echo "${{ env.heLLo }}"
             
-            echo $world
-            echo $WORLD
-            echo $woRLd
-            echo "${{ env.world }}"
-            echo "${{ env.WORLD }}"
-            echo "${{ env.woRLd }}"
+#             echo $world
+#             echo $WORLD
+#             echo $woRLd
+#             echo "${{ env.world }}"
+#             echo "${{ env.WORLD }}"
+#             echo "${{ env.woRLd }}"
             
-            echo $bye
-            echo $BYE
-            echo $bYe
-            echo "${{ env.bye }}"
-            echo "${{ env.BYE }}"
-            echo "${{ env.bYe }}"
+#             echo $bye
+#             echo $BYE
+#             echo $bYe
+#             echo "${{ env.bye }}"
+#             echo "${{ env.BYE }}"
+#             echo "${{ env.bYe }}"
             
-            echo $test
-            echo $TEST
-            echo $tESt
-            echo "${{ env.test }}"
-            echo "${{ env.TEST }}"
-            echo "${{ env.tESt }}"
-          env:
-            woRLd: woRLd
+#             echo $test
+#             echo $TEST
+#             echo $tESt
+#             echo "${{ env.test }}"
+#             echo "${{ env.TEST }}"
+#             echo "${{ env.tESt }}"
+#           env:
+#             woRLd: woRLd
   
 #   build0:
 #     name: Build v0
