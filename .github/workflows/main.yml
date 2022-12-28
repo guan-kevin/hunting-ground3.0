@@ -5,12 +5,25 @@ jobs:
   test:
       name: Test
       runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          include:
+            # /compiler
+            - env:
+                JDK_VERSION: "19"
+                GATE_TAGS: "style,fullbuild,test"
+                PRIMARY: "compiler"
+            - env:
+                JDK_VERSION: "20"
+                GATE_TAGS: "style,fullbuild,test"
+                PRIMARY: "compiler"
       steps:
         - uses: actions/checkout@v2
         - run: |
             echo "Hello"
-            echo "::error::Stop here"
             echo "World"
+          env: ${{ matrix.env }}
         
 # jobs:
 #   env_test:
