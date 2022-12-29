@@ -37,7 +37,7 @@ jobs:
 #         - run: |
 #             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
         - run: |
-            echo "${{ matrix.version_dict.version1 }} and ${{ matrix.version_dict.version2 }}"
+            echo "${{ matrix.version_dict.version1[0] }} and ${{ matrix.version_dict.version1[1] }} and ${{ matrix.version_dict.version2.attribute2 }} and ${{ matrix.version_dict.version2.attribute1 }}"
             
 
 # jobs:
