@@ -6,27 +6,31 @@ jobs:
       name: Test
       runs-on: ubuntu-latest
       strategy:
-        fail-fast: false
         matrix:
-          include:
-            # /compiler
-            - env:
-                JDK_V+-/*ERSION: "19"
-                GATE_TAGS: "style,fullbuild,test"
-                PRIMARY: "compiler"
-                primary: "bad"
-            - env:
-                JDK_VERSION: "20"
-                GATE_TAGS: "style,fullbuild,test"
-                PRIMARY: "compiler"
-                primary: "test"
+          pair: [{first: hello, second: world}, {first: hola, second: mundo}]
+          pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
+          version: [[a, b], [A, B]]
       steps:
         - uses: actions/checkout@v2
         - run: |
-            echo "Hello"
-            echo "World"
-            echo "${{ matrix.env.primary }}"
-        
+            echo "$first and $second"
+          env: ${{ matrix.pair  }}
+        - run: |
+            echo "$first and $second"
+          env:
+            first: {{ matrix.pair.first }}
+            second: {{ matrix.pair.second }}
+        - run: |
+            echo "$first and $second"
+          env: ${{ matrix.pair_str  }}
+        - run: |
+            echo "$first and $second"
+          env:
+            first: {{ matrix.pair_str.first }}
+            second: {{ matrix.pair_str.second }}
+        - run: |
+            echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
+
 # jobs:
 #   env_test:
 #       name: Test Env
