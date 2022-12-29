@@ -7,35 +7,35 @@ jobs:
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          pair: [{first: hello, second: world}, {first: hola, second: mundo}]
-          version: [[a, b], [A, B]]
-          pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
-          version_dict: [[{version1: [0, 1], version2: 2}], {version1: [3, 4], version2: 5}]
+#           pair: [{first: hello, second: world}, {first: hola, second: mundo}]
+#           version: [[a, b], [A, B]]
+#           pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
+          version_dict: [[{version1: [0, 1], version2: {attribute1: 2, attribute2: 3}}], {version1: [4, 5], version2: {attribute1: 6, attribute2: 7}}]
       steps:
         - uses: actions/checkout@v2
         - run: python test.py
-        - run: |
-            echo "$first vs ${{ env.first }}"
-            echo "$second vs ${{ env.second }}"
-          env: ${{ matrix.pair  }}
-        - run: |
-            echo "$A vs ${{ env.A }} vs ${{ matrix.pair.first }}"
-            echo "$B vs ${{ env.B }} vs ${{ matrix.pair.second }}"
-          env:
-            A: ${{ matrix.pair.first }}
-            B: ${{ matrix.pair.second }}
-        - run: |
-            echo "$first vs ${{ env.first }}"
-            echo "$second vs ${{ env.second }}"
-          env: ${{ matrix.pair_str  }}
-        - run: |
-            echo "$A vs ${{ env.A }} vs ${{ matrix.pair_str.first }}"
-            echo "$B vs ${{ env.B }} vs ${{ matrix.pair_str.second }}"
-          env:
-            A: ${{ matrix.pair_str.first }}
-            B: ${{ matrix.pair_str.second }}
-        - run: |
-            echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
+#         - run: |
+#             echo "$first vs ${{ env.first }}"
+#             echo "$second vs ${{ env.second }}"
+#           env: ${{ matrix.pair  }}
+#         - run: |
+#             echo "$A vs ${{ env.A }} vs ${{ matrix.pair.first }}"
+#             echo "$B vs ${{ env.B }} vs ${{ matrix.pair.second }}"
+#           env:
+#             A: ${{ matrix.pair.first }}
+#             B: ${{ matrix.pair.second }}
+#         - run: |
+#             echo "$first vs ${{ env.first }}"
+#             echo "$second vs ${{ env.second }}"
+#           env: ${{ matrix.pair_str  }}
+#         - run: |
+#             echo "$A vs ${{ env.A }} vs ${{ matrix.pair_str.first }}"
+#             echo "$B vs ${{ env.B }} vs ${{ matrix.pair_str.second }}"
+#           env:
+#             A: ${{ matrix.pair_str.first }}
+#             B: ${{ matrix.pair_str.second }}
+#         - run: |
+#             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
         - run: |
             echo "${{ matrix.version_dict.version1 }} and ${{ matrix.version_dict.version2 }}"
             
