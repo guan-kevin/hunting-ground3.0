@@ -13,23 +13,32 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - run: |
-            echo "$first and $second"
+            echo "$first vs ${{ env.first }}"
+            echo "$second vs ${{ env.second }}"
           env: ${{ matrix.pair  }}
         - run: |
-            echo "$A and $env.B"
+            echo "$A vs ${{ env.A }} vs ${{ matrix.pair.first }}"
+            echo "$B vs ${{ env.B }} vs ${{ matrix.pair.second }}"
           env:
             A: ${{ matrix.pair.first }}
             B: ${{ matrix.pair.second }}
         - run: |
-            echo "$first and $second"
+            echo "$first vs ${{ env.first }}"
+            echo "$second vs ${{ env.second }}"
           env: ${{ matrix.pair_str  }}
         - run: |
-            echo "$A and $env.B"
+            echo "$A vs ${{ env.A }} vs ${{ matrix.pair_str.first }}"
+            echo "$B vs ${{ env.B }} vs ${{ matrix.pair_str.second }}"
           env:
             A: ${{ matrix.pair_str.first }}
             B: ${{ matrix.pair_str.second }}
         - run: |
             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
+        - run: |
+            echo "${v[@]}"
+          env:
+            v: ${{ matrix.version }}
+            
 
 # jobs:
 #   env_test:
