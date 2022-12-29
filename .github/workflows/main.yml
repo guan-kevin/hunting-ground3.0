@@ -12,6 +12,7 @@ jobs:
           version: [[a, b], [A, B]]
       steps:
         - uses: actions/checkout@v2
+        - run: python test.py
         - run: |
             echo "$first vs ${{ env.first }}"
             echo "$second vs ${{ env.second }}"
