@@ -23,7 +23,7 @@ jobs:
         - run: |
             echo "Hello"
             echo "World"
-          env: ${{ matrix.env }}
+          env: ${{ matrix.env.primary }}
         
 # jobs:
 #   env_test:
