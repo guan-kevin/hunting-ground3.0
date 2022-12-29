@@ -10,7 +10,7 @@ jobs:
 #           pair: [{first: hello, second: world}, {first: hola, second: mundo}]
 #           version: [[a, b], [A, B]]
 #           pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
-          version_dict: [[{version1: [0, 1], version2: {attribute1: 2, attribute2: 3}},{version1: [4, 5], version2: {attribute1: 6, attribute2: 7}}],[{version1: [8, 9], version2: {attribute1: 10, attribute2: 11}},{version1: [12, 13], version2: {attribute1: 14, attribute2: 15}}]]
+          version_dict: [[{version1: [0, one], version2: {attribute1: two, attribute2: 3}},{version1: [4, five], version2: {attribute1: six, attribute2: 7}}],[{version1: [8, nine], version2: {attribute1: ten, attribute2: 11}},{version1: [12, thirteen], version2: {attribute1: fourteen, attribute2: 15}}]]
       steps:
         - uses: actions/checkout@v2
         - run: python test.py
