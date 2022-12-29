@@ -35,7 +35,7 @@ jobs:
         - run: |
             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
         - run: |
-            echo "${v[@]}"
+            echo "$v"
           env:
             v: ${{ matrix.version }}
             
