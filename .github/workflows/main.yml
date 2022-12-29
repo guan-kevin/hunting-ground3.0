@@ -14,16 +14,18 @@ jobs:
                 JDK_V+-/*ERSION: "19"
                 GATE_TAGS: "style,fullbuild,test"
                 PRIMARY: "compiler"
+                primary: "bad"
             - env:
                 JDK_VERSION: "20"
                 GATE_TAGS: "style,fullbuild,test"
                 PRIMARY: "compiler"
+                primary: "test"
       steps:
         - uses: actions/checkout@v2
         - run: |
             echo "Hello"
             echo "World"
-          env: ${{ matrix.env.primary }}
+            echo "${{ matrix.env.primary }}"
         
 # jobs:
 #   env_test:
