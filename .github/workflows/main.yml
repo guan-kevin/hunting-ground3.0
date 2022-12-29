@@ -34,10 +34,6 @@ jobs:
             B: ${{ matrix.pair_str.second }}
         - run: |
             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
-        - run: |
-            echo "$v"
-          env:
-            v: ${{ matrix.version }}
             
 
 # jobs:
