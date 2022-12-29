@@ -16,6 +16,11 @@ jobs:
             echo "$first and $second"
           env: ${{ matrix.pair  }}
         - run: |
+            echo "$A and $B"
+          env:
+            A: ${{ matrix.pair.first }}
+            B: ${{ matrix.pair.second }}
+        - run: |
             echo "$first and $second"
           env: ${{ matrix.pair_str  }}
         - run: |
