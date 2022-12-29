@@ -10,13 +10,13 @@ jobs:
 #           pair: [{first: hello, second: world}, {first: hola, second: mundo}]
 #           version: [[a, b], [A, B]]
 #           pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
-          version_dict: [[{version1: [0, 1], version2: {attribute1: 2, attribute2: 3}}], {version1: [4, 5], version2: {attribute1: 6, attribute2: 7}}]
+          version_dict: [[{version1: [0, 1], version2: {attribute1: 2, attribute2: 3}},{version1: [4, 5], version2: {attribute1: 6, attribute2: 7}}],[{version1: [8, 9], version2: {attribute1: 10, attribute2: 11}},{version1: [12, 13], version2: {attribute1: 14, attribute2: 15}}]]
       steps:
         - uses: actions/checkout@v2
         - run: python test.py
 #         - run: |
 #             echo "$first vs ${{ env.first }}"
-#             echo "$second vs ${{ env.second }}"
+#             echo "$second vs ${{ env.second }}" 
 #           env: ${{ matrix.pair  }}
 #         - run: |
 #             echo "$A vs ${{ env.A }} vs ${{ matrix.pair.first }}"
@@ -37,7 +37,7 @@ jobs:
 #         - run: |
 #             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
         - run: |
-            echo "${{ matrix.version_dict.version1[0] }} and ${{ matrix.version_dict.version1[1] }} and ${{ matrix.version_dict.version2.attribute2 }} and ${{ matrix.version_dict.version2.attribute1 }}"
+            echo "test"
             
 
 # jobs:
