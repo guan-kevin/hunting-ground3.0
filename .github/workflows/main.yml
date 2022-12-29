@@ -17,7 +17,7 @@ jobs:
         - run: |
             echo "$first vs ${{ env.first }}"
             echo "$second vs ${{ env.second }}" 
-          env: ${{ matrix.pair  }}
+          env: ${{ matrix.pair }}
         - run: |
             echo "$A vs ${{ env.A }} vs ${{ matrix.pair.first }}"
             echo "$B vs ${{ env.B }} vs ${{ matrix.pair.second }}"
@@ -27,7 +27,7 @@ jobs:
         - run: |
             echo "$first vs ${{ env.first }}"
             echo "$second vs ${{ env.second }}"
-          env: ${{ matrix.pair_str  }}
+          env: "${{ matrix.pair_str }}"
         - run: |
             echo "$A vs ${{ env.A }} vs ${{ matrix.pair_str.first }}"
             echo "$B vs ${{ env.B }} vs ${{ matrix.pair_str.second }}"
