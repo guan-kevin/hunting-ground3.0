@@ -8,8 +8,9 @@ jobs:
       strategy:
         matrix:
           pair: [{first: hello, second: world}, {first: hola, second: mundo}]
-          pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
           version: [[a, b], [A, B]]
+          pair_str: [{first: "hello", second: "world"}, {first: "hola", second: "mundo"}]
+          version_dict: [[{version1: a, version2: A, }], {version1: b, version2: B}]
       steps:
         - uses: actions/checkout@v2
         - run: python test.py
@@ -35,6 +36,8 @@ jobs:
             B: ${{ matrix.pair_str.second }}
         - run: |
             echo "${{ matrix.version[0] }} and ${{ matrix.version[1] }}"
+        - run: |
+            echo "${{ matrix.version_dict.version1 }} and ${{ matrix.version_dict.version2 }}"
             
 
 # jobs:
