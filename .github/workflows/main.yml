@@ -35,7 +35,7 @@ jobs:
             A: ${{ matrix.pair_str.first }}
             B: ${{ matrix.pair_str.second }}
         - run: |
-            echo "${{ matrix.version['0'] }} and ${{ matrix.version["1"] }}"
+            echo "${{ matrix.version['0'] }} and ${{ matrix.version[1] }}"
         - run: |
             echo "${{ matrix.version_dict[0].version1[0] }}, ${{ matrix.version_dict[0].version1[1] }}, ${{ matrix.version_dict[0].version2.attribute1 }}, ${{ matrix.version_dict[0].version2.attribute2 }}"
             echo "${{ matrix.version_dict[1].version1[0] }}, ${{ matrix.version_dict[1].version1[1] }}, ${{ matrix.version_dict[1].version2.attribute1 }}, ${{ matrix.version_dict[1].version2.attribute2 }}"
