@@ -54,10 +54,10 @@ jobs:
             if [[ ${{ startsWith(matrix.version[1], 'a') }} ]]; then
               echo "!4"
             fi
-            if [[ ${{ endsWith(matrix.version_dict[0].version1[1], 'ne' }} ]]; then
+            if [[ ${{ endsWith(matrix.version_dict[0].version1[1], 'ne') }} ]]; then
               echo "5"
             fi
-            if [[ ${{ endsWith(matrix.version_dict[0].version2.attribute2, 'ne' }} ]]; then
+            if [[ ${{ endsWith(matrix.version_dict[0].version2.attribute2, 'ne') }} ]]; then
               echo "!6"
             fi
 
