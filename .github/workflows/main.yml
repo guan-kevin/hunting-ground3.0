@@ -39,6 +39,27 @@ jobs:
         - run: |
             echo "${{ matrix.version_dict[0].version1[0] }}, ${{ matrix.version_dict[0].version1[1] }}, ${{ matrix.version_dict[0].version2.attribute1 }}, ${{ matrix.version_dict[0].version2.attribute2 }}"
             echo "${{ matrix.version_dict[1].version1[0] }}, ${{ matrix.version_dict[1].version1[1] }}, ${{ matrix.version_dict[1].version2.attribute1 }}, ${{ matrix.version_dict[1].version2.attribute2 }}"
+        - name: Test expressions
+          continue-on-error: true
+          run: |
+            if [[ ${{ contains(matrix.pair.first, 'll') }} == true ]]; then
+              echo "1"
+            fi
+            if [[ ${{ contains(matrix.pair.second, 'll') }} == true ]]; then
+              echo "!2"
+            fi
+            if [[ ${{ startsWith(matrix.version[0], 'a') }} ]]; then
+              echo "3"
+            fi
+            if [[ ${{ startsWith(matrix.version[1], 'a') }} ]]; then
+              echo "!4"
+            fi
+            if [[ ${{ endsWith(matrix.version_dict[0].version1[1], 'ne' }} ]]; then
+              echo "5"
+            fi
+            if [[ ${{ endsWith(matrix.version_dict[0].version2.attribute2, 'ne' }} ]]; then
+              echo "!6"
+            fi
 
 # jobs:
 #   env_test:
