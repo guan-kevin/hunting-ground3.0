@@ -40,39 +40,39 @@ jobs:
             echo "${{ matrix.version_dict[0].version1[0] }}, ${{ matrix.version_dict[0].version1[1] }}, ${{ matrix.version_dict[0].version2.attribute1 }}, ${{ matrix.version_dict[0].version2.attribute2 }}"
             echo "${{ matrix.version_dict[1].version1[0] }}, ${{ matrix.version_dict[1].version1[1] }}, ${{ matrix.version_dict[1].version2.attribute1 }}, ${{ matrix.version_dict[1].version2.attribute2 }}"
         - run: |
-            echo "${{ format('{{matrix.pair.first: {0}, matrix.version[0]: {1}, matrix.version_dict[0].version1[1]: {2}!}}', matrix.pair.first, matrix.version[0], matrix.version_dict[0].version1[1]) }}"
-        - name: Test expressions
-          continue-on-error: true
-          run: |
-            echo "${{ matrix.pair.first }}"
-            if [[ ${{ contains(matrix.pair.first, 'll') }} == true ]]; then
-                echo "1"
-            fi
+            echo "${{ format('{{matrix.pair.first: {0}}}', matrix.pair.first }}"
+#         - name: Test expressions
+#           continue-on-error: true
+#           run: |
+#             echo "${{ matrix.pair.first }}"
+#             if [[ ${{ contains(matrix.pair.first, 'll') }} == true ]]; then
+#                 echo "1"
+#             fi
 
-            echo "${{ matrix.pair.second }}"
-            if [[ ${{ contains(matrix.pair.second, 'll') }} == true ]]; then
-                echo "!2"
-            fi
+#             echo "${{ matrix.pair.second }}"
+#             if [[ ${{ contains(matrix.pair.second, 'll') }} == true ]]; then
+#                 echo "!2"
+#             fi
 
-            echo "${{ matrix.version[0] }}"
-            if [[ ${{ startsWith(matrix.version[0], 'a') }} == true ]]; then
-                echo "3"
-            fi
+#             echo "${{ matrix.version[0] }}"
+#             if [[ ${{ startsWith(matrix.version[0], 'a') }} == true ]]; then
+#                 echo "3"
+#             fi
 
-            echo "${{ matrix.version[1] }}"
-            if [[ ${{ startsWith(matrix.version[1], 'a') }} == true ]]; then
-                echo "!4"
-            fi
+#             echo "${{ matrix.version[1] }}"
+#             if [[ ${{ startsWith(matrix.version[1], 'a') }} == true ]]; then
+#                 echo "!4"
+#             fi
 
-            echo "${{ matrix.version_dict[0].version1[1] }}"
-            if [[ ${{ endsWith(matrix.version_dict[0].version1[1], 'ne') }} == true ]]; then
-                echo "5"
-            fi
+#             echo "${{ matrix.version_dict[0].version1[1] }}"
+#             if [[ ${{ endsWith(matrix.version_dict[0].version1[1], 'ne') }} == true ]]; then
+#                 echo "5"
+#             fi
 
-            echo "${{ matrix.version_dict[0].version2.attribute2 }}"
-            if [[ ${{ endsWith(matrix.version_dict[0].version2.attribute2, 'ne') }} == true ]]; then
-                echo "!6"
-            fi
+#             echo "${{ matrix.version_dict[0].version2.attribute2 }}"
+#             if [[ ${{ endsWith(matrix.version_dict[0].version2.attribute2, 'ne') }} == true ]]; then
+#                 echo "!6"
+#             fi
 
 # jobs:
 #   env_test:
