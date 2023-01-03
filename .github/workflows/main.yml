@@ -40,7 +40,7 @@ jobs:
             echo "${{ matrix.version_dict[0].version1[0] }}, ${{ matrix.version_dict[0].version1[1] }}, ${{ matrix.version_dict[0].version2.attribute1 }}, ${{ matrix.version_dict[0].version2.attribute2 }}"
             echo "${{ matrix.version_dict[1].version1[0] }}, ${{ matrix.version_dict[1].version1[1] }}, ${{ matrix.version_dict[1].version2.attribute1 }}, ${{ matrix.version_dict[1].version2.attribute2 }}"
         - run: |
-            echo "${{ format('{{matrix.pair.first: {0}}}', matrix.pair.first }}"
+            echo "${{ format('{{matrix.pair.first: {0}}}', matrix.pair.first) }}"
 #         - name: Test expressions
 #           continue-on-error: true
 #           run: |
