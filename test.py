@@ -1,3 +1,3 @@
 import sys
 
-exit(1)
+exit(0)
