@@ -7,3 +7,4 @@ runs:
       with:
         python-version: '3.8'
     - run: python3 test.py
+      shell: bash
