@@ -8,9 +8,8 @@ jobs:
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          config: [{shell: bash}, {shell: python}]
-      defaults:
-        run: ${{ matrix.config }}
+          config: [{run: {shell: bash}}, {run: {shell: python}}]
+      defaults: ${{ matrix.config }}
       steps:
         - run: echo "Hello"
           continue-on-error: true
