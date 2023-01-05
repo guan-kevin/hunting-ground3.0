@@ -1,13 +1,26 @@
 name: Main
 on: [push, pull_request]
 
+
 jobs:
   test:
       name: Test
       runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          config: [{shell: bash}, {shell: python}]
+      defaults:
+        run: ${{ matrix.config }}
       steps:
-        - uses: actions/checkout@v3
-        - uses: ./.github/actions/status
+        - run: echo "Hello"
+          continue-on-error: true
+        - run: print("Hello")
+          continue-on-error: true  
+            
+# jobs:
+#   test:
+#       name: Test
+#       runs-on: ubuntu-latest
 #       strategy:
 #         matrix:
 #           pair: [{first: hello, second: world}, {first: hola, second: mundo}]
