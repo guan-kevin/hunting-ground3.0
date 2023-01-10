@@ -11,7 +11,7 @@ jobs:
           shell: [python, bash]
       defaults:
         run:
-          shell: ${{ matrix.shell }}
+          shell: "${{ matrix.shell }}"
       steps:
         - run: echo "Hello"
           continue-on-error: true
