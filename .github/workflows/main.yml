@@ -6,12 +6,14 @@ jobs:
   test:
       name: Test
       runs-on: ubuntu-latest
+      env:
+        use_bash: ${{ github.shell }}
       strategy:
         matrix:
           shell: [python, bash]
       defaults:
         run:
-          shell: "${{ matrix.shell }}"
+          shell: ${{ env.use_bash == 'bash' && 'bash' || 'python' }}
       steps:
         - run: echo "Hello"
           continue-on-error: true
