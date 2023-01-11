@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-      name: ${{ var.HELLO }}
+      name: ${{ vars.HELLO }}
       runs-on: ubuntu-latest
       env:
         use_bash: ${{ matrix.shell }}
@@ -15,9 +15,9 @@ jobs:
         run:
           shell: ${{ env.use_bash == 'bash' && 'bash' || 'python' }}
       steps:
-        - run: echo "${{ var.HELLO }}"
+        - run: echo "${{ vars.HELLO }}"
           continue-on-error: true
-        - run: print("${{ var.HELLO }}")
+        - run: print("${{ vars.HELLO }}")
           continue-on-error: true  
 
 # jobs:
