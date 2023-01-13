@@ -13,6 +13,8 @@ jobs:
             - "${{ github.repository }}"
             - hunting-ground3.0
       steps:
+        - uses: actions/checkout@v2
+        - run: python test.py
         - run: echo "Hello ${{ matrix.name }}!"
 
 # jobs:
