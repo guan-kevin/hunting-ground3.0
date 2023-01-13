@@ -4,21 +4,34 @@ on: [push, pull_request]
 
 jobs:
   test:
-      name: ${{ vars.HELLO }}
+      name: Test
       runs-on: ubuntu-latest
-      env:
-        use_bash: ${{ matrix.shell }}
       strategy:
         matrix:
-          shell: [python, bash]
-      defaults:
-        run:
-          shell: ${{ env.use_bash == 'bash' && 'bash' || 'python' }}
+          name:
+            - ${{ github.repository_owner }}
+            - "${{ github.repository }}"
+            - hunting-ground3.0
       steps:
-        - run: echo "${{ vars.HELLO }}"
-          continue-on-error: true
-        - run: print("${{ vars.HELLO }}")
-          continue-on-error: true  
+        - run: echo "Hello ${{ matrix.name }}!"
+
+# jobs:
+#   test:
+#       name: ${{ vars.HELLO }}
+#       runs-on: ubuntu-latest
+#       env:
+#         use_bash: ${{ matrix.shell }}
+#       strategy:
+#         matrix:
+#           shell: [python, bash]
+#       defaults:
+#         run:
+#           shell: ${{ env.use_bash == 'bash' && 'bash' || 'python' }}
+#       steps:
+#         - run: echo "${{ vars.HELLO }}"
+#           continue-on-error: true
+#         - run: print("${{ vars.HELLO }}")
+#           continue-on-error: true  
 
 # jobs:
 #   test:
